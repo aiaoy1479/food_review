@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
 def index(request):
-    render(request, 'index.html')
+    return render(request, 'index.html')
 
 def cate(request):
-    render(request, 'cate.html')
+    return render(request, 'cate.html')
 
 def review(request):
-    render(request, 'reviews.html')
+    return render(request, 'reviews.html')
 
 def search(request):
-    render(request, 'search.html')
+    return render(request, 'search.html')
