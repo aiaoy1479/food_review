@@ -49,6 +49,13 @@ h1 { font-size: 1.5em; margin: 10px; }
 	<body>
 		<a href="/index/">Home</a>   <a href="/cate/">Categories</a>
 	<hr></br>
+		{{shop_name}}
+		{{shop.cate}}
+		{{shop.note}}
+	</br><hr></br>
+	
+	<form method='POST' action=''>
+	{% csrf_token %}
 		rating...
 	</br>
 <fieldset class="rating">
@@ -67,7 +74,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 </br></br>
 		<label for="discuss">What did you think?</label>
 		</br>
-		<textarea id="discuss" name="dicusss" rows="6" cols="35" >your discussion...
+		<textarea id="discuss" name="discuss" rows="6" cols="35" >your discussion...
 		</textarea>
 		</br>
 
@@ -75,5 +82,6 @@ h1 { font-size: 1.5em; margin: 10px; }
 		</textarea>
 		</br>
 		<input type="submit" value="submit">
+	</form>
 	</body>
 </html>

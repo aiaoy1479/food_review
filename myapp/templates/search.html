@@ -1,6 +1,8 @@
-<a href="/index/">back</a>
+<a href="/index/">Home</a>   <a href="/cate/">Categories</a>
 	<hr></br>
-<form>
+	<hr></br>
+<form method='GET' action=''>
+	{% csrf_token %}
   <div>
     <input type="search" id="mySearch" name="q">
     <button>Search</button>
