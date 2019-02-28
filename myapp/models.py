@@ -8,18 +8,17 @@ class Review(models.Model):
     body = models.TextField(max_length=600)
     review_date = models.DateTimeField('date published')
 
-class Cate(models.Model):
-    shop_cate = models.TextField(max_length=50)
-    food_cate = models.TextField(max_length=50)
-
-class Menu(models.Model):
-    menu = models.TextField(max_length=50)
-    cost = models.IntegerField(default=0)
-
 class Shop(models.Model):
     name = models.TextField(max_length=100)
     locate = models.TextField(max_length=100)
     note = models.TextField(max_length=200)
-    cate = models.ForeignKey(Cate, on_delete=models.CASCADE)
-    menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
 
+class Cate(models.Model):
+    shop_cate = models.TextField(max_length=50)
+    food_cate = models.TextField(max_length=50)
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)
+
+class Menu(models.Model):
+    menu = models.TextField(max_length=50)
+    cost = models.IntegerField(default=0)
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE, null=True)

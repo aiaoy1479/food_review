@@ -1,15 +1,14 @@
 <a href="/index/">Home</a>   <a href="/cate/">Categories</a>
 	<hr></br>
-	<hr></br>
 <form method='GET' action=''>
-	{% csrf_token %}
   <div>
     <input type="search" id="mySearch" name="q">
     <button>Search</button>
   </div>
 </form>
-
+{% for element in shop%}
+	<li><a href="{% url 'review' element.id %}">{{element.name}}</a></li>
+	</br>
+{% endfor %}
 
 <hr>
-
-<h1>Test details</h1>

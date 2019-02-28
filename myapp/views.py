@@ -9,8 +9,10 @@ def cate(request):
     return render(request, 'cate.html')
 
 def review(request,shop_name):
-    shops = Shop.objects.get(name=shop_name)
-    last_review = Review.object.filter(name=x).last()[0:3]
+    shops = Shop.objects.get(id=shop_name)
+    last_review = Review.objects.filter(id=shop_name).last()
+    if last_review:
+        last_review = last_review[0:3]
     if request.POST:
         title = shop_name
         rating = request.POST['rating']
@@ -23,5 +25,7 @@ def review(request,shop_name):
 def search(request):
     shops = ""
     if request.GET:
-        shops = Shop.objects.filter(name=request.GET['q'])
+        shops = Shop.objects.filter(name__contains=request.GET['q'])
     return render(request, 'search.html', {'shop': shops})
+    
+    
