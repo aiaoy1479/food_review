@@ -1,14 +1,23 @@
-<a href="/index/">Home</a>   <a href="/cate/">Categories</a>
-	<hr></br>
 <form method='GET' action=''>
-  <div>
-    <input type="search" id="mySearch" name="q">
-    <button>Search</button>
-  </div>
+	<div align="left">
+		<input type="search" id="mySearch" name="q">
+		<button>Search</button>
+	</div>
 </form>
+	<a href="/index/">Home</a>   <a href="/cate/">Categories</a>    <a href="">Good Food Guide</a>
+	<hr></br>
+	
+<form method='GET' action=''>
+	<div>
+		<input type="search" id="mySearch" name="q">
+		<button>Search</button>
+	</div>
+</form>
+
 {% for element in shop%}
 	<li><a href="{% url 'review' element.id %}">{{element.name}}</a></li>
 	</br>
 {% endfor %}
 
 <hr>
+
