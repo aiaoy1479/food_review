@@ -6,6 +6,22 @@ def index(request):
     return render(request, 'index.html', {'last_review': last_review})
 
 def cate(request):
+    x = ""
+    y = ""
+    if request.GET:
+        x = request.GET['Shop']
+        y = request.GET['Food']
+        if x != "":
+            shops_list = Shop.objects.filter(shop_cate=x)
+            if y != "":
+                shops_list = Shop.objects.filter(shop_cate=x).filter(food_cate=y)
+        else:
+            if y == "":
+                shops_list = Shop.objects.all()[0:20]
+            else:
+                shops_list = Shop.objects.filter(food_cate=y)
+        return render(request, 'cate.html', {'current_x': x, 'current_y': y, 'shops_list': shops_list})
+        
     return render(request, 'cate.html')
 
 def review(request,shopID):

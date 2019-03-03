@@ -17,26 +17,63 @@
 	
     <select name="Shop" id="shop" onchange="form.submit()">
 		<option value="" 
-		{% if x == current_x %} selected="selected" {% end if %}>
+		{% if '' == current_x %} selected="selected" {% endif %}>
 		---เลือกประเภทร้าน---
 		</option>
-		<option value="food" 
-		{% if x == current_x %} selected="selected" {% end if %}>
+		
+		<option value="ร้านอาหาร" 
+		{% if 'ร้านอาหาร' == current_x %} selected="selected" {% endif %}>
 		ร้านอาหาร
 		</option>
-		<option value="drink" >เครื่องดื่ม</option>
-		<option value="dessert" >ขนมหวาน</option>
+		
+		<option value="เครื่องดื่ม" 
+		{% if 'เครื่องดื่ม' == current_x %} selected="selected" {% endif %}>
+		เครื่องดื่ม
+		</option>
+		
+		<option value="ขนมหวาน" 
+		{% if 'ขนมหวาน' == current_y %} selected="selected" {% endif %}>
+		ขนมหวาน</option>
+		
     </select>
 	
     <select name="Food" id="food" onchange="form.submit()">
-		<option value="">--------</option>
-		<option value="food">อาหารตามสั่ง</option>
-		<option value="drink">ก๋วยเตี๋ยว</option>
-		<option value="dessert">ยำ และอาหารอีสาน</option>
-		<option value="dessert">อาหารจานเดียว</option>
-		<option value="dessert">ข้าวราดแกง</option>
+		<option value=""
+		{% if '' == current_y %} selected="selected" {% endif %}>
+		---เลือกประเภทอาหาร---
+		</option>
+		
+		<option value="อาหารตามสั่ง"
+		{% if 'อาหารตามสั่ง' == current_y %} selected="selected" {% endif %}>
+		อาหารตามสั่ง</option>
+		
+		<option value="ก๋วยเตี๋ยว"
+		{% if 'ก๋วยเตี๋ยว' == current_y %} selected="selected" {% endif %}>
+		ก๋วยเตี๋ยว</option>
+		
+		<option value="ยำ และอาหารอีสาน"
+		{% if 'ยำ และอาหารอีสาน' == current_y %} selected="selected" {% endif %}>
+		ยำ และอาหารอีสาน</option>
+		
+		<option value="อาหารจานเดียว" 
+		{% if 'อาหารจานเดียว' == current_y %} selected="selected" {% endif %}>
+		อาหารจานเดียว</option>
+		
+		<option value="ข้าวราดแกง"
+		{% if 'ข้าวราดแกง' == current_y %} selected="selected" {% endif %}>
+		ข้าวราดแกง</option>
+		
     </select>
 	
+	</br></br>
+	{{current_x}} {{current_y}}
+	{% for element in shops_list %}
+	
+		{{element.name}}
+		{{element.rating}}
+		<hr></br>
+	
+	{% endfor %}
 	</form>
 		
 	</body>
