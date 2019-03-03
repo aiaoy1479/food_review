@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Shop, Review, Menu
+from django.db.models import Avg
 
 def index(request):
     last_review = Review.objects.order_by('-id')[0:6]
@@ -27,6 +28,10 @@ def cate(request):
 def review(request,shopID):
     shops = Shop.objects.get(id=shopID)
     recent_review = Review.objects.filter(shop_id=shopID).order_by('-id')
+    print(recent_review)
+    print(recent_review.aggregate(Avg('rating')))
+    shops.rating_avg = recent_review.aggregate(Avg('rating'))['rating__avg']
+    shops.save()
     if recent_review:
         recent_review = recent_review[0:3]
     if request.POST:
@@ -35,6 +40,8 @@ def review(request,shopID):
         wri_name = request.POST['name']
         new_review = Shop.objects.get(id=shopID)
         new_review.review_set.create(rating=rate, writer_name=wri_name, body=body_new)
+        shops.rating_avg = recent_review.aggregate(Avg('rating'))['rating__avg']
+        shops.save()
         
     return render(request, 'reviews.html',{'shop': shops, 'recent_review': recent_review})
 

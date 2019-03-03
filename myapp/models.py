@@ -5,7 +5,7 @@ class Shop(models.Model):
     name = models.TextField(max_length=100)
     locate = models.TextField(max_length=100)
     note = models.TextField(default='', max_length=200)
-    rating = models.FloatField(default=0)
+    rating_avg = models.FloatField(default=0)
     shop_cate = models.TextField(default='')
     food_cate = models.TextField(default='')
 

@@ -1,6 +1,6 @@
 <html>
-	<head>
-		<title>reviews page</title>
+    <head>
+        <title>reviews page</title>
 <style type="text/css">
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
@@ -44,40 +44,41 @@ h1 { font-size: 1.5em; margin: 10px; }
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
-</style>		
-	</head>
-	<body>
-	<form method='GET' action='/search/'>
-		<div>
-			<input type="search" id="mySearch" name="q">
-			<button>Search</button>
-		</div>
-	</form>
-		<a href="/index/">Home</a>   <a href="/categories/">Categories</a>    <a href="">Good Food Guide</a>
-	<hr></br>
-		<h1>{{shop.name}}</h1>
-		<h4>{{shop.cate}}</h4>
-		<h4>{{shop.note}}</h4>
-	</br><hr></br>
-	
-	<h2>Recent reviews</h2></br>
-	{% for element in recent_review %}
-	
-	{{element.body}}
-	</br>
-	name: {{element.writer_name}}
-	</br>
-	rating: {{element.rating}} date: {{element.review_date}}
-	</br><hr>
-	{% endfor %}
-	
-	</br>
-	
-	<h3>ให้คะแนนร้าน</h3>
-	<form method='POST' action=''>
-	{% csrf_token %}
-		rating...
-	</br>
+</style>        
+    </head>
+    <body>
+    <form method='GET' action='/search/'>
+        <div>
+            <input type="search" id="mySearch" name="q">
+            <button>Search</button>
+        </div>
+    </form>
+        <a href="/index/">Home</a>   <a href="/categories/">Categories</a>    <a href="">Good Food Guide</a>
+    <hr></br>
+        <h1>{{shop.name}}</h1>
+        <h4>{{shop.rating_avg}}</h4>
+        <h4>{{shop.note}}</h4>
+		<h4>{{shop.locate}}</h4>
+    </br><hr></br>
+    
+    <h2>Recent reviews</h2></br>
+    {% for element in recent_review %}
+    
+    {{element.body}}
+    </br>
+    name: {{element.writer_name}}
+    </br>
+    rating: {{element.rating}} date: {{element.review_date}}
+    </br><hr>
+    {% endfor %}
+    
+    </br>
+    
+    <h3>แสดงความคิดเห็นและให้คะแนนร้าน</h3>
+    <form method='POST' action=''>
+    {% csrf_token %}
+        rating...
+    </br>
 <fieldset class="rating">
     <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="5 stars"></label>
     <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="4.5 stars"></label>
@@ -92,16 +93,16 @@ h1 { font-size: 1.5em; margin: 10px; }
 </fieldset>
 
 </br></br>
-		<label for="discuss">What did you think?</label>
-		</br>
-		<textarea id="discuss" name="discuss" rows="6" cols="35" >your discussion...
-		</textarea>
-		</br>
+        <label for="discuss">What did you think?</label>
+        </br>
+        <textarea id="discuss" name="discuss" rows="6" cols="35" >your discussion...
+        </textarea>
+        </br>
 
-		<textarea id="name" name="name" rows="1" cols="15">Name...
-		</textarea>
-		</br>
-		<input type="submit" value="submit">
-	</form>
-	</body>
+        <textarea id="name" name="name" rows="1" cols="15">Name...
+        </textarea>
+        </br>
+        <input type="submit" value="submit">
+    </form>
+    </body>
 </html>

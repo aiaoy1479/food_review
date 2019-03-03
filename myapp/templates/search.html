@@ -16,6 +16,7 @@
 
 {% for element in shop%}
 	<li><a href="{% url 'review' element.id %}">{{element.name}}</a></li>
+	{{element.rating_avg}}
 	</br>
 {% endfor %}
 
