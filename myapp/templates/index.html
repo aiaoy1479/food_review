@@ -1,5 +1,24 @@
-<a href="/index/">Home</a>   <a href="/cate/">Categories</a>   <a href="/reviews/">reviews</a>
-	<hr></br>
+<form method='GET' action='/search/'>
+	<div>
+		<input type="search" id="mySearch" name="q">
+		<button>Search</button>
+	</div>
+</form>
+
+<a href="/index/">Home</a>   <a href="/categories/">Categories</a>    <a href="">Good Food Guide</a>
+
+<hr></br>
+
+<h2>Recent reviews</h2></br>
+	{% for element in last_review %}
+	
+	{{element.body}}
+	</br>
+	name: {{element.writer_name}}
+	</br>
+	rating: {{element.rating}} date: {{element.review_date}}
+	</br><hr>
+	{% endfor %}
 	
 <h1>Test</h1>
 

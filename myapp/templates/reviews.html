@@ -47,30 +47,33 @@ h1 { font-size: 1.5em; margin: 10px; }
 </style>		
 	</head>
 	<body>
-	<form method='GET' action=''>
+	<form method='GET' action='/search/'>
 		<div>
 			<input type="search" id="mySearch" name="q">
 			<button>Search</button>
 		</div>
 	</form>
-		<a href="/index/">Home</a>   <a href="/cate/">Categories</a>    <a href="">Good Food Guide</a>
+		<a href="/index/">Home</a>   <a href="/categories/">Categories</a>    <a href="">Good Food Guide</a>
 	<hr></br>
 		<h1>{{shop.name}}</h1>
 		<h4>{{shop.cate}}</h4>
 		<h4>{{shop.note}}</h4>
 	</br><hr></br>
 	
-	<h2>Last reviews</h2></br>
-	{% for element in last_review %}
-	name: {{element.writer_name}}
-	</br>
+	<h2>Recent reviews</h2></br>
+	{% for element in recent_review %}
+	
 	{{element.body}}
 	</br>
-	rating: {{element.rating}} date: {{element.review_date}}
+	name: {{element.writer_name}}
 	</br>
-	</hr>
+	rating: {{element.rating}} date: {{element.review_date}}
+	</br><hr>
 	{% endfor %}
 	
+	</br>
+	
+	<h3>ให้คะแนนร้าน</h3>
 	<form method='POST' action=''>
 	{% csrf_token %}
 		rating...
